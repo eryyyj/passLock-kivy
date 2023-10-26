@@ -1,4 +1,4 @@
-SidebarPage:
+LoginPage:
 
 <LoginPage@AnchorLayout>:
     anchor_x: "center"
@@ -24,14 +24,14 @@ SidebarPage:
                 size_hint: 1,1
                 fit_mode: "scale-down"
             TextInput:
-                text: "Enter username here"
+                hint_text: "Enter username here"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 post_hint: {'x':.3,'y':.2}
                 spacing: 10
             TextInput:
-                text: "Enter password here"
+                hint_text: "Enter password here"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
@@ -92,25 +92,25 @@ SidebarPage:
                 size_hint: 1,None
                 height: "50dp"
             TextInput:
-                text: "Enter username"
+                hint_text: "Enter username"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
-                text: "Enter Email"
+                hint_text: "Enter Email"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
-                text: "Enter Password"
+                hint_text: "Enter Password"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
-                text: "Confirm Password"
+                hint_text: "Confirm Password"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
@@ -133,6 +133,7 @@ SidebarPage:
                     size_hint: .4,None
                     height: "30dp"
 <SidebarPage@AnchorLayout>
+    id: sidebar
     anchor_x: "center"
     anchor_y: "center"
     FloatLayout:
@@ -179,6 +180,28 @@ SidebarPage:
                     text: "Trash"
                     size_hint: .5,None
                     height: "50dp"
+                MDGridLayout:
+                    pos_hint: .5,1
+                    rows: 1
+                    spacing: "5dp"
+                    size_hint: .1,.1
+                    pos_hint: {'center_y':0.5, 'center_x':0.5}
+                    MDIconButton:
+                        icon: "images/block_setting.png"
+                        icon_size: "100dp"
+                        size_hint: .1,.1
+                    MDIconButton:
+                        icon: "images/block_tools.png"
+                        icon_size: "100dp"
+                        size_hint: .1,.1
+                    MDIconButton:
+                        icon: "images/block_info.png"
+                        icon_size: "100dp"
+                        size_hint: .1,.1
+
+
+
+
 
 
 
