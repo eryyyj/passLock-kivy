@@ -1,4 +1,4 @@
-LoginPage:
+SidebarPage:
 
 <LoginPage@AnchorLayout>:
     anchor_x: "center"
@@ -19,13 +19,14 @@ LoginPage:
             size_hint: .75,1
             GridLayout:
                 cols : 1
-                pos_hint: {'x':.3,'y':.5}
+                pos_hint: {'x':.3,'y':.6}
                 size_hint: .45,.45
                 spacing: "12dp"
                 Image:
-                    source: "images/headlogo.png"
-                    pos_hint: {'x':.01,'y':0}
-                    size_hint: 1,1
+                    source: "images/logomain.png"
+                    pos_hint: {'x':.01,'y':.4}
+                    size_hint: 1,None
+                    height: "200dp"
                     fit_mode: "scale-down"
                 TextInput:
                     hint_text: "Enter username here"
@@ -149,16 +150,17 @@ LoginPage:
                 size: self.size
         GridLayout:
             cols:1
-            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            pos_hint: {'center_y':0.4, 'center_x':0.5}
             size_hint: .75,1
             Image:
-                source: 'images/headlogo.png'
+                source: 'images/logomain.png'
                 fit_mode: "scale-down"
                 size_hint: .3,.3
             GridLayout:
                 cols:1
                 spacing: "5dp"
                 size_hint: 1,1
+                pos_hint: {'center_y':0.5, 'center_x':0.5}
                 BoxLayout:
                     size_hint: 1,None
                     height: "10dp"
@@ -187,19 +189,42 @@ LoginPage:
                     rows: 1
                     spacing: "5dp"
                     size_hint: .1,.1
-                    pos_hint: {'center_y':0.5, 'center_x':0.5}
-                    MDIconButton:
-                        icon: "images/block_setting.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_tools.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_info.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
+                    # ayusin yung positioning ng buttons
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but1.height
+                        MDIconButton:
+                            id: but1
+                            icon: "images/block_setting.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but2.height
+                        MDIconButton:
+                            id: but2
+                            icon: "images/block_tools.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but3.height
+                        MDIconButton:
+                            id: but3
+                            icon: "images/block_info.png"
+                            icon_size: "50dp"
+<MainAppPage@MDAnchorLayout>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDGridLayout:
+            cols: 1
 
 
 
