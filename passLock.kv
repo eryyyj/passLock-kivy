@@ -1,4 +1,4 @@
-SidebarPage:
+PasslockPage:
 
 <LoginPage@AnchorLayout>:
     anchor_x: "center"
@@ -189,7 +189,6 @@ SidebarPage:
                     rows: 1
                     spacing: "5dp"
                     size_hint: .1,.1
-                    # ayusin yung positioning ng buttons
                     AnchorLayout:
                         size_hint_y: None
                         height: but1.height
@@ -211,7 +210,7 @@ SidebarPage:
                             id: but3
                             icon: "images/block_info.png"
                             icon_size: "50dp"
-<MainAppPage@MDAnchorLayout>
+<PasslockPage@MDAnchorLayout>
     anchor_x: "center"
     anchor_y: "center"
     FloatLayout:
@@ -225,7 +224,38 @@ SidebarPage:
                 size: self.size
         MDGridLayout:
             cols: 1
+            MDGridLayout:
+                rows: 1
+                adaptive_height: True
+                padding: "30dp"
+                MDIconButton:
+                    icon: 'magnify'
+                MDTextField:
+                    id: search_field
+                    hint_text: 'Search for credentials'
+                MDIconButton:
+                    icon: 'account-filter'
+            passList:
+            FloatLayout:
+                size_hint_y: None
+                height: 0
+                MDFloatingActionButton:
+                    id: float_button
+                    icon: "account-plus"
+                    md_bg_color: app.theme_cls.primary_color
+                    pos_hint: {"center_x": .90, "y": 1}
+                    padding: "10dp"
 
+<passList@RecycleView>
+    viewclass: 'MDFlatButton'
+    key_size: 'height'
+    RecycleBoxLayout:
+        padding: dp(10)
+        default_size: None, dp(48)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
 
 
 
