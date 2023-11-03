@@ -1,4 +1,4 @@
-PasslockPage:
+ToolbarMainAppPage:
 
 <LoginPage@AnchorLayout>:
     anchor_x: "center"
@@ -210,7 +210,7 @@ PasslockPage:
                             id: but3
                             icon: "images/block_info.png"
                             icon_size: "50dp"
-<PasslockPage@MDAnchorLayout>
+<PasslistPage@MDAnchorLayout>
     anchor_x: "center"
     anchor_y: "center"
     FloatLayout:
@@ -257,7 +257,26 @@ PasslockPage:
         height: self.minimum_height
         orientation: 'vertical'
 
+<ToolbarMainAppPage>
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'PassLock'
+            left_action_items: [["menu",lambda x: nav_drawer.toggle_nav_drawer()]]
+        PasslistPage:
 
+<MainAppPage>
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                PasslistPage:
+        MDNavigationDrawer:
+            padding: 0
+            ScrollView:
+                size_hint: 1,1
+                SidebarPage:
+                    size_hint: 1,None
+                    height: 600
 
 
 
