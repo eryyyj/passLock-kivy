@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from kivymd.uix.anchorlayout import MDAnchorLayout
@@ -9,7 +10,6 @@ from kivy.core.window import Window
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivymd.theming import ThemeManager
 from kivy.uix.scrollview import ScrollView
-
 Window.size = (300,500)
 class CreateAccountPage(AnchorLayout):
     pass
@@ -30,7 +30,10 @@ class MainAppPage(Screen):
     pass
 class NavDrawer(MDNavigationDrawer):
     pass
-
+class ForgotPasswordPage(MDAnchorLayout):
+    pass
+class ForgotPasswordGridLayoutDesign(AnchorLayout):
+    pass
 class PassLockApp(MDApp):
     def navigation_draw(self):
         print('navigation_draw working')
