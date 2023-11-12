@@ -16,30 +16,31 @@ class PageManager(ScreenManager):
     pass
 class CreateAccountPage(AnchorLayout, Screen):
     def create_account(self, instance):
-        username = self.ids.username_input.text
+        username_create = self.ids.username_create_input.text
         email = self.ids.email_input.text
-        password = self.ids.password_input.text
+        password_create = self.ids.password_create_input.text
         confirm_password = self.ids.confirm_password_input.text
 
-        if self.verify_account(username, email, password, confirm_password):
+        if self.verify_account(username_create, email, password_create):
             # Add create the account in the database
             print("Account created successfully!")
             self.manager.current = "LoginPage"
         else:
             print("Account creation failed. Please check your information.")
 
-    def verify_account(self, username, email, password, confirm_password):
+    def verify_account(self,username_create, email, password_create):
         valid_password = "admin"
         valid_confirm_password = "admin"
         return valid_password == valid_confirm_password
     
 class LoginPage(AnchorLayout, Screen):
     def login_clicked(self, instance):
-        username = self.ids.username_input.text
-        password = self.ids.password_input.text
+        username_login = self.ids.username_input.text
+        password_login = self.ids.password_input.text
 
-        if self.check_credentials(username, password):
-            print(f"Login successful! Welcome to PassLock, {username}.")
+        if self.check_credentials(username_login, password_login):
+            print(f"Login successful! Welcome to PassLock, {username_login}.")
+            self.manager.current = "MainPage"
         else:
             print("Login failed. Invalid username or password.")
 
@@ -55,13 +56,17 @@ class passList(RecycleView):
         self.data = [{'text':str(i)} for i in range(20)]
 class PasslistPage(MDAnchorLayout):
     pass
-class SidebarPage(AnchorLayout):
+class SidebarPage(AnchorLayout,Screen):
     pass
 class ToolbarMainAppPage(Screen):
     pass
 class MainAppPage(Screen):
     pass
 class NavDrawer(MDNavigationDrawer):
+    pass
+class ForgotPasswordPage(MDAnchorLayout,Screen):
+    pass
+class ForgotPasswordGridLayoutDesign(AnchorLayout,Screen):
     pass
 
 class PassLockApp(MDApp):
