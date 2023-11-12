@@ -1,6 +1,70 @@
-LoginPage:
+PageManager:    
+    LoginPage:
+    CreateAccountPage:
+    ToolbarMainAppPage:
+    ForgotPasswordPage:
+    MainAppPage:
 
+<ForgotPasswordPage>:
+    name: 'ForgotPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        ForgotPasswordGridLayoutDesign:
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            size_hint: .8,.8
+
+
+<ForgotPasswordGridLayoutDesign>:
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [1,1,1,1]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GridLayout:
+        cols:1
+        pos_hint: {'x':.5,'y':.5}
+        size_hint: .5,.5
+        Label:
+            text: "Forgot Password"
+            font_size: '20dp'
+            color: .2,.5,.7,.7
+            size_hint: (1,None)
+            markup: True
+        TextInput:
+            hint_text: "Enter username here"
+            singleline:True
+            size_hint: 1, None
+            height: "30dp"
+            spacing: 10
+        Button:
+            text: "Confirm"
+            size_hint: .4,None
+            height: "30dp"
+        Button:
+            text: "Back"
+            size_hint: .4,None
+            height: "30dp"
+            on_release: app.root.current = 'LoginPage'
+        
 <LoginPage@AnchorLayout>:
+    name: "LoginPage"
     anchor_x: "center"
     anchor_y: "center"
     FloatLayout:
@@ -19,15 +83,17 @@ LoginPage:
             size_hint: .75,1
             GridLayout:
                 cols : 1
-                pos_hint: {'x':.3,'y':.5}
+                pos_hint: {'x':.3,'y':.6}
                 size_hint: .45,.45
                 spacing: "12dp"
                 Image:
-                    source: "images/headlogo.png"
-                    pos_hint: {'x':.01,'y':0}
-                    size_hint: 1,1
+                    source: "images/logomain.png"
+                    pos_hint: {'x':.01,'y':.4}
+                    size_hint: 1,None
+                    height: "200dp"
                     fit_mode: "scale-down"
                 TextInput:
+                    id: username_input
                     hint_text: "Enter username here"
                     singleline:True
                     size_hint: 1, None
@@ -35,6 +101,7 @@ LoginPage:
                     post_hint: {'x':.3,'y':.2}
                     spacing: 10
                 TextInput:
+                    id: password_input
                     hint_text: "Enter password here"
                     singleline:True
                     size_hint: 1, None
@@ -49,11 +116,13 @@ LoginPage:
                         size_hint: .6,None
                         height: "30dp"
                         font_size: 10
+                        on_release: root.login_clicked(self)
                     Button:
                         text: "Forgot Password"
                         size_hint: .4,None
                         height: "30dp"
                         font_size: 10
+                        on_release: app.root.current = "ForgotPage"
                 GridLayout:
                     rows: 1
                     pos_hint: {'x':.3,'y':.2}
@@ -68,8 +137,10 @@ LoginPage:
                         size_hint: .4,None
                         height: "30dp"
                         font_size: 10
+                        on_release: app.root.current = "CreateAccountPage"
 
 <CreateAccountPage@AnchorLayout>:
+    name: "CreateAccountPage"
     anchor_x: "center"
     anchor_y: "center"
     FloatLayout:
@@ -94,24 +165,28 @@ LoginPage:
                 size_hint: 1,None
                 height: "50dp"
             TextInput:
+                id: username_create_input
                 hint_text: "Enter username"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
+                id: email_input
                 hint_text: "Enter Email"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
+                id: password_create_input
                 hint_text: "Enter Password"
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
                 spacing: 10
             TextInput:
+                id: confirm_password_input
                 hint_text: "Confirm Password"
                 singleline:True
                 size_hint: 1, None
@@ -130,10 +205,12 @@ LoginPage:
                     text: "Create Account"
                     size_hint: .6,None
                     height: "30dp"
+                    on_release: root.create_account(self)
                 Button:
                     text: "Back To Login"
                     size_hint: .4,None
                     height: "30dp"
+                    on_release: app.root.current = "LoginPage"
 <SidebarPage@AnchorLayout>
     id: sidebar
     anchor_x: "center"
@@ -149,16 +226,17 @@ LoginPage:
                 size: self.size
         GridLayout:
             cols:1
-            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            pos_hint: {'center_y':0.4, 'center_x':0.5}
             size_hint: .75,1
             Image:
-                source: 'images/headlogo.png'
+                source: 'images/logomain.png'
                 fit_mode: "scale-down"
                 size_hint: .3,.3
             GridLayout:
                 cols:1
                 spacing: "5dp"
                 size_hint: 1,1
+                pos_hint: {'center_y':0.5, 'center_x':0.5}
                 BoxLayout:
                     size_hint: 1,None
                     height: "10dp"
@@ -187,26 +265,94 @@ LoginPage:
                     rows: 1
                     spacing: "5dp"
                     size_hint: .1,.1
-                    pos_hint: {'center_y':0.5, 'center_x':0.5}
-                    MDIconButton:
-                        icon: "images/block_setting.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_tools.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_info.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but1.height
+                        MDIconButton:
+                            id: but1
+                            icon: "images/block_setting.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but2.height
+                        MDIconButton:
+                            id: but2
+                            icon: "images/block_tools.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but3.height
+                        MDIconButton:
+                            id: but3
+                            icon: "images/block_info.png"
+                            icon_size: "50dp"
+<PasslistPage@MDAnchorLayout>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDGridLayout:
+            cols: 1
+            MDGridLayout:
+                rows: 1
+                adaptive_height: True
+                padding: "30dp"
+                MDIconButton:
+                    icon: 'magnify'
+                MDTextField:
+                    id: search_field
+                    hint_text: 'Search for credentials'
+                MDIconButton:
+                    icon: 'account-filter'
+            passList:
+            FloatLayout:
+                size_hint_y: None
+                height: 0
+                MDFloatingActionButton:
+                    id: float_button
+                    icon: "account-plus"
+                    md_bg_color: app.theme_cls.primary_color
+                    pos_hint: {"center_x": .90, "y": 1}
+                    padding: "10dp"
 
+<passList@RecycleView>
+    viewclass: 'MDFlatButton'
+    key_size: 'height'
+    RecycleBoxLayout:
+        padding: dp(10)
+        default_size: None, dp(48)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
 
+<ToolbarMainAppPage>
+    name: "Toolbar"
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'PassLock'
+            left_action_items: [["menu",lambda x: nav_drawer.toggle_nav_drawer()]]
+        PasslistPage:
 
-
-
-
-
-
-
-
+<MainAppPage>
+    name: 'MainPage'
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                PasslistPage:
+        MDNavigationDrawer:
+            padding: 0
+            ScrollView:
+                size_hint: 1,1
+                SidebarPage:
+                    size_hint: 1,None
+                    height: 600
+                    
