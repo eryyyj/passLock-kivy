@@ -54,7 +54,7 @@ class LoginPage(AnchorLayout, Screen):
 
         if self.check_credentials(username_login, password_login):
             print(f"Login successful! Welcome to PassLock, {username_login}.")
-            self.manager.current = "Main"
+            self.manager.current = "MainPage"
         else:
             print("Login failed. Invalid username or password.")
 
