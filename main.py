@@ -21,17 +21,31 @@ class CreateAccountPage(AnchorLayout, Screen):
         password_create = self.ids.password_create_input.text
         confirm_password = self.ids.confirm_password_input.text
 
-        if self.verify_account(username_create, email, password_create):
-            # Add create the account in the database
+        if password_create == confirm_password:
             print("Account created successfully!")
             self.manager.current = "LoginPage"
         else:
             print("Account creation failed. Please check your information.")
 
-    def verify_account(self,username_create, email, password_create):
-        valid_password = "admin"
-        valid_confirm_password = "admin"
-        return valid_password == valid_confirm_password
+    def confirm_account(self,username_create, email, password_create):
+        confirm_password = "admin"
+        confirm_confirm_password = "admin"
+        return confirm_password == confirm_confirm_password
+    
+    def verify_account(self, instance):
+        username_create = self.ids.username_create_input.text
+        email = self.ids.email_input.text
+        password_create = self.ids.password_create_input.text
+        confirm_password = self.ids.confirm_password_input.text
+
+        if username_create and email and password_create and confirm_password:
+            if password_create == confirm_password:
+                # Passwords match, verification successful
+                print("Verification successful!")
+            else:
+                print("Passwords do not match. Please verify.")
+        else:
+            print("Please fill in all fields.")
     
 class LoginPage(AnchorLayout, Screen):
     def login_clicked(self, instance):
@@ -40,7 +54,7 @@ class LoginPage(AnchorLayout, Screen):
 
         if self.check_credentials(username_login, password_login):
             print(f"Login successful! Welcome to PassLock, {username_login}.")
-            self.manager.current = "MainPage"
+            self.manager.current = "Main"
         else:
             print("Login failed. Invalid username or password.")
 
