@@ -1,5 +1,63 @@
-LoginPage:
+AddCredentialsPage:
 
+# page for retrieving your account password
+<ForgotPasswordPage>:
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        ForgotPasswordGridLayoutDesign:
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            size_hint: .8,.8
+
+#Grid Layout Design in forgot password page
+<ForgotPasswordGridLayoutDesign>:
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [1,1,1,1]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GridLayout:
+        cols:1
+        pos_hint: {'x':.5,'y':.5}
+        size_hint: .5,.5
+        Label:
+            text: "Forgot Password"
+            font_size: '20dp'
+            color: .2,.5,.7,.7
+            size_hint: (1,None)
+            markup: True
+        TextInput:
+            hint_text: "Enter username here"
+            singleline:True
+            size_hint: 1, None
+            height: "30dp"
+            spacing: 10
+        Button:
+            text: "Confirm"
+            size_hint: .4,None
+            height: "30dp"
+        Button:
+            text: "Back"
+            size_hint: .4,None
+            height: "30dp"
+
+#Page for logging in
 <LoginPage@AnchorLayout>:
     anchor_x: "center"
     anchor_y: "center"
@@ -19,13 +77,14 @@ LoginPage:
             size_hint: .75,1
             GridLayout:
                 cols : 1
-                pos_hint: {'x':.3,'y':.5}
+                pos_hint: {'x':.3,'y':.6}
                 size_hint: .45,.45
                 spacing: "12dp"
                 Image:
-                    source: "images/headlogo.png"
-                    pos_hint: {'x':.01,'y':0}
-                    size_hint: 1,1
+                    source: "images/logomain.png"
+                    pos_hint: {'x':.01,'y':.4}
+                    size_hint: 1,None
+                    height: "200dp"
                     fit_mode: "scale-down"
                 TextInput:
                     hint_text: "Enter username here"
@@ -44,6 +103,7 @@ LoginPage:
                 GridLayout:
                     rows: 1
                     pos_hint: {'x':.3,'y':.5}
+                    size_hint: (1,None)
                     Button:
                         text: "Login"
                         size_hint: .6,None
@@ -69,6 +129,35 @@ LoginPage:
                         height: "30dp"
                         font_size: 10
 
+#Page when creating an account is successful
+<CreateAccountSuccessfulPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            pos_hint: {'center_y':0.25, 'center_x':0.5}
+            cols: 1
+            size_hint: 1,1
+            Label:
+                text: 'Account Creation Successful :)'
+                font_size: '20dp'
+                size_hint: 1,None
+            Button:
+                text: 'Back to Login Page'
+                size_hint: .5,None
+                height: '30dp'
+
+
+#Page for Account Creation
 <CreateAccountPage@AnchorLayout>:
     anchor_x: "center"
     anchor_y: "center"
@@ -84,8 +173,8 @@ LoginPage:
                 size: self.size
         BoxLayout:
             orientation: "vertical"
-            pos_hint: {'x':.3,'y':.10}
-            size_hint: .45,.45
+            pos_hint: {'x':.15,'y':.10}
+            size_hint: .7,.7
             spacing: "20dp"
             Label:
                 text: "Register"
@@ -121,6 +210,7 @@ LoginPage:
                 text: "verify"
                 size_hint: 1,None
                 height: "30dp"
+                font_size: '10dp'
             BoxLayout:
                 size_hint: 1,None
                 height: "30dp"
@@ -130,10 +220,14 @@ LoginPage:
                     text: "Create Account"
                     size_hint: .6,None
                     height: "30dp"
+                    font_size: '10dp'
                 Button:
                     text: "Back To Login"
                     size_hint: .4,None
                     height: "30dp"
+                    font_size: '10dp'
+
+#Sidebar page ito yung page na nakalagay sa navigation drawer
 <SidebarPage@AnchorLayout>
     id: sidebar
     anchor_x: "center"
@@ -149,37 +243,22 @@ LoginPage:
                 size: self.size
         GridLayout:
             cols:1
-            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            pos_hint: {'center_y':0.4, 'center_x':0.5}
             size_hint: .75,1
             Image:
-                source: 'images/headlogo.png'
+                source: 'images/logomain.png'
                 fit_mode: "scale-down"
                 size_hint: .3,.3
             GridLayout:
                 cols:1
                 spacing: "5dp"
                 size_hint: 1,1
+                pos_hint: {'center_y':0.5, 'center_x':0.5}
                 BoxLayout:
                     size_hint: 1,None
                     height: "10dp"
                 Button:
-                    text: "All Items"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Logins"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Personal"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "History"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Trash"
+                    text: "Logout"
                     size_hint: .5,None
                     height: "50dp"
                 MDGridLayout:
@@ -187,20 +266,172 @@ LoginPage:
                     rows: 1
                     spacing: "5dp"
                     size_hint: .1,.1
-                    pos_hint: {'center_y':0.5, 'center_x':0.5}
-                    MDIconButton:
-                        icon: "images/block_setting.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_tools.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
-                    MDIconButton:
-                        icon: "images/block_info.png"
-                        icon_size: "100dp"
-                        size_hint: .1,.1
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but1.height
+                        MDIconButton:
+                            id: but1
+                            icon: "images/block_setting.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but2.height
+                        MDIconButton:
+                            id: but2
+                            icon: "images/block_tools.png"
+                            icon_size: "50dp"
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: but3.height
+                        MDIconButton:
+                            id: but3
+                            icon: "images/block_info.png"
+                            icon_size: "50dp"
 
+# Main app page siya pero walang top app bar and navigation drawer
+<PasslistPage@MDAnchorLayout>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDGridLayout:
+            cols: 1
+            MDGridLayout:
+                rows: 1
+                adaptive_height: True
+                padding: "30dp"
+                MDIconButton:
+                    icon: 'magnify'
+                MDTextField:
+                    id: search_field
+                    hint_text: 'Search for credentials'
+                MDIconButton:
+                    icon: 'account-filter'
+            passList:
+            FloatLayout:
+                size_hint_y: None
+                height: 0
+                MDFloatingActionButton:
+                    id: float_button
+                    icon: "account-plus"
+                    md_bg_color: app.theme_cls.primary_color
+                    pos_hint: {"center_x": .90, "y": 1}
+                    padding: "10dp"
+
+#Credentials list recycle view
+<passList@RecycleView>
+    viewclass: 'MDFlatButton'
+    key_size: 'height'
+    RecycleBoxLayout:
+        padding: dp(10)
+        default_size: None, dp(48)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
+
+
+#Main App Page with Tool bar or top app bar
+<ToolbarMainAppPage>
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'PassLock'
+            left_action_items: [["menu",lambda x: nav_drawer.toggle_nav_drawer()]]
+        PasslistPage:
+
+
+#Main App page with navigation drawer
+<MainAppPage>
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                PasslistPage:
+        MDNavigationDrawer:
+            padding: 0
+            ScrollView:
+                size_hint: 1,1
+                SidebarPage:
+                    size_hint: 1,None
+                    height: 600
+
+#Adding Account Credentials Page
+<AddCredentialsPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            size_hint: .8,.8
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: 'Add Credentials'
+                size_hint: 1,None
+                font_size: '30dp'
+            TextInput:
+                hint_text: 'Enter Platform'
+                size_hint: 1,None
+                height: '25dp'
+                font_size: '10dp'
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            TextInput:
+                hint_text: 'Enter Username'
+                size_hint: 1,None
+                height: '25dp'
+                font_size: '10dp'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1,None
+                height: "45dp"
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: dp(10)
+                    TextInput:
+                        hint_text: 'Enter Username'
+                        size_hint: 1,None
+                        height: '25dp'
+                        font_size: '10dp'
+
+                    Button:
+                        text: "reveal"
+                        font_size: '10dp'
+                        size_hint: .55,None
+                        height: '25dp'
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            Button:
+                text: "Add Credential"
+                font_size: '10dp'
+                size_hint: .55,None
+                height: '25dp'
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            Button:
+                text: "Back To Main Page"
+                font_size: '10dp'
+                size_hint: .55,None
+                height: '25dp'
 
 
 
