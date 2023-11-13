@@ -13,7 +13,6 @@ from kivy.uix.scrollview import ScrollView
 Window.size = (300,500)
 class CreateAccountPage(AnchorLayout):
     pass
-pass
 class LoginPage(AnchorLayout):
     pass
 class passList(RecycleView):
@@ -34,6 +33,9 @@ class ForgotPasswordPage(MDAnchorLayout):
     pass
 class ForgotPasswordGridLayoutDesign(AnchorLayout):
     pass
+class CreateAccountSuccessfulPage(AnchorLayout):
+    pass
+
 class PassLockApp(MDApp):
     def navigation_draw(self):
         print('navigation_draw working')

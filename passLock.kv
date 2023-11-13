@@ -1,4 +1,4 @@
-MainAppPage:
+PasslistPage:
 
 # page for retrieving your account password
 <ForgotPasswordPage>:
@@ -129,6 +129,34 @@ MainAppPage:
                         height: "30dp"
                         font_size: 10
 
+#Page when creating an account is successful
+<CreateAccountSuccessfulPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            pos_hint: {'center_y':0.25, 'center_x':0.5}
+            cols: 1
+            size_hint: 1,1
+            Label:
+                text: 'Account Creation Successful :)'
+                font_size: '20dp'
+                size_hint: 1,None
+            Button:
+                text: 'Back to Login Page'
+                size_hint: .5,None
+                height: '30dp'
+
+
 #Page for Account Creation
 <CreateAccountPage@AnchorLayout>:
     anchor_x: "center"
@@ -145,8 +173,8 @@ MainAppPage:
                 size: self.size
         BoxLayout:
             orientation: "vertical"
-            pos_hint: {'x':.3,'y':.10}
-            size_hint: .45,.45
+            pos_hint: {'x':.15,'y':.10}
+            size_hint: .7,.7
             spacing: "20dp"
             Label:
                 text: "Register"
@@ -182,6 +210,7 @@ MainAppPage:
                 text: "verify"
                 size_hint: 1,None
                 height: "30dp"
+                font_size: '10dp'
             BoxLayout:
                 size_hint: 1,None
                 height: "30dp"
@@ -191,10 +220,12 @@ MainAppPage:
                     text: "Create Account"
                     size_hint: .6,None
                     height: "30dp"
+                    font_size: '10dp'
                 Button:
                     text: "Back To Login"
                     size_hint: .4,None
                     height: "30dp"
+                    font_size: '10dp'
 
 #Sidebar page ito yung page na nakalagay sa navigation drawer
 <SidebarPage@AnchorLayout>
@@ -331,6 +362,8 @@ MainAppPage:
                 SidebarPage:
                     size_hint: 1,None
                     height: 600
+
+
 
 
 
