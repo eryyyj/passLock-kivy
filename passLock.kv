@@ -1,9 +1,12 @@
 PageManager:    
     LoginPage:
     CreateAccountPage:
+    CreateAccountSuccessfulPage:
     ToolbarMainAppPage:
     ForgotPasswordPage:
     MainAppPage:
+    AddCredentialsPage:
+    passList:
 
 <ForgotPasswordPage>:
     name: 'ForgotPage'
@@ -49,6 +52,7 @@ PageManager:
             markup: True
         TextInput:
             hint_text: "Enter username here"
+            id: email_sent 
             singleline:True
             size_hint: 1, None
             height: "30dp"
@@ -57,6 +61,7 @@ PageManager:
             text: "Confirm"
             size_hint: .4,None
             height: "30dp"
+            on_release: root.confirm_clicked(self)
         Button:
             text: "Back"
             size_hint: .4,None
@@ -138,6 +143,33 @@ PageManager:
                         height: "30dp"
                         font_size: 10
                         on_release: app.root.current = "CreateAccountPage"
+<CreateAccountSuccessfulPage>
+    name: 'SuccesfulPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            pos_hint: {'center_y':0.25, 'center_x':0.5}
+            cols: 1
+            size_hint: 1,1
+            Label:
+                text: 'Account Creation Successful :)'
+                font_size: '20dp'
+                size_hint: 1,None
+            Button:
+                text: 'Back to Login Page'
+                size_hint: .5,None
+                height: '30dp'
+                on_release: app.root.current = "LoginPage"
 
 <CreateAccountPage@AnchorLayout>:
     name: "CreateAccountPage"
@@ -242,25 +274,11 @@ PageManager:
                     size_hint: 1,None
                     height: "10dp"
                 Button:
-                    text: "All Items"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Logins"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Personal"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "History"
-                    size_hint: .6,None
-                    height: "50dp"
-                Button:
-                    text: "Trash"
+                    text: "Logout"
                     size_hint: .5,None
                     height: "50dp"
+                    on_release: app.root.current = "LoginPage"
+    
                 MDGridLayout:
                     pos_hint: .5,1
                     rows: 1
@@ -312,6 +330,7 @@ PageManager:
                     hint_text: 'Search for credentials'
                 MDIconButton:
                     icon: 'account-filter'
+                    on_release: app.root.current = "PassList"
             passList:
             FloatLayout:
                 size_hint_y: None
@@ -322,8 +341,10 @@ PageManager:
                     md_bg_color: app.theme_cls.primary_color
                     pos_hint: {"center_x": .90, "y": 1}
                     padding: "10dp"
+                    on_release: app.root.current = "AddPage"
 
 <passList@RecycleView>
+    name: 'PassList'
     viewclass: 'MDFlatButton'
     key_size: 'height'
     RecycleBoxLayout:
@@ -357,3 +378,76 @@ PageManager:
                     size_hint: 1,None
                     height: 600
                     
+<AddCredentialsPage>
+    name: 'AddPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        spacing: "12dp"
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            size_hint: .8,.8
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: 'Add Credentials'
+                size_hint: 1,None
+                font_size: '30dp'
+            TextInput:
+                id: platform_add
+                hint_text: 'Enter Platform'
+                size_hint: 1,None
+                height: '25dp'
+                font_size: '10dp'
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            TextInput:
+                id: username_add
+                hint_text: 'Enter Username'
+                size_hint: 1,None
+                height: '25dp'
+                font_size: '10dp'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1,None
+                height: "45dp"
+                BoxLayout:
+                    orientation: 'horizontal'
+                    spacing: dp(10)
+                    TextInput:
+                        id: password_add
+                        hint_text: 'Enter Password'
+                        size_hint: 1,None
+                        height: '25dp'
+                        font_size: '10dp'
+                    Button:
+                        text: "reveal"
+                        font_size: '10dp'
+                        size_hint: .55,None
+                        height: '25dp'
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            Button:
+                text: "Add Credential"
+                font_size: '10dp'
+                size_hint: .55,None
+                height: '25dp'
+                on_release: root.add_credential(self)
+            BoxLayout:
+                size_hint: 1,None
+                height: "20dp"
+            Button:
+                text: "Back To Main Page"
+                font_size: '10dp'
+                size_hint: .55,None
+                height: '25dp'
+                on_release: app.root.current = "MainPage"
