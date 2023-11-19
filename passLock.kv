@@ -1,4 +1,4 @@
-AddCredentialsPage:
+CredentialsCreatedPage:
 
 # page for retrieving your account password
 <ForgotPasswordPage>:
@@ -432,8 +432,29 @@ AddCredentialsPage:
                 font_size: '10dp'
                 size_hint: .55,None
                 height: '25dp'
-
-
+<CredentialsCreatedPage@MDAnchorLayout>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: .8,1
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "Credentials has been added to your storage :)"
+                size_hint: .8,None
+            Button:
+                text: "back to storage"
+                size_hint: .8,None
+                height: "30dp"
 
 
 
