@@ -39,6 +39,14 @@ class AddCredentialsPage(AnchorLayout):
     pass
 class CredentialsCreatedPage(MDAnchorLayout):
     pass
+class SettingsPage(MDAnchorLayout):
+    pass
+class PersonalAccountPage(MDAnchorLayout):
+    pass
+class AboutPage(MDAnchorLayout):
+    pass
+class CredentialsPage(MDAnchorLayout):
+    pass
 class PassLockApp(MDApp):
     def navigation_draw(self):
         print('navigation_draw working')

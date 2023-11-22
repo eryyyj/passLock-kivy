@@ -1,4 +1,4 @@
-CredentialsCreatedPage:
+CredentialsPage:
 
 # page for retrieving your account password
 <ForgotPasswordPage>:
@@ -455,10 +455,103 @@ CredentialsCreatedPage:
                 text: "back to storage"
                 size_hint: .8,None
                 height: "30dp"
+#page when user clicks settings
+<SettingsPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "ang pogi mo po sir rich"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
+#Page when you want to view your personal account
+<PersonalAccountPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "sir rich ipasa niyo po kami sa dsa"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
 
+#page when you want to view the info of the developers
+<AboutPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "we labyu sir, love passlock team"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
 
-
-
-
+#Page when you want to view your selected credentials
+<CredentialsPage>
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "labyu po sir :))"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
 
 
