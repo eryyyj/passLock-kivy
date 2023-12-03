@@ -98,7 +98,7 @@ class ForgotPasswordGridLayoutDesign(AnchorLayout,Screen):
         
         if email_send:
             if email_send:
-                print("Email has sent")
+                print("email has sent you")
             else:
                 print("Email not found. pelase verify")
         else:
@@ -113,9 +113,24 @@ class AddCredentialsPage(AnchorLayout,Screen):
         add_password = self.ids.password_add.text
         
         if platform and add_username and add_password:
-            print("Add SuccessFul!!!")
+            self.manager.current = "CredentialsPage"
         else:
             print("Please fill in all fields")
+            
+class CredentialsCreatedPage(MDAnchorLayout,Screen):
+    pass
+
+class SettingsPage(MDAnchorLayout,Screen):
+    pass
+
+class PersonalAccountPage(MDAnchorLayout,Screen):
+    pass
+
+class AboutPage(MDAnchorLayout,Screen):
+    pass
+
+class CredentialsPage(MDAnchorLayout,Screen):
+    pass
     
 class PassLockApp(MDApp):
     def navigation_draw(self):
