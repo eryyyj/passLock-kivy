@@ -6,7 +6,12 @@ PageManager:
     ForgotPasswordPage:
     MainAppPage:
     AddCredentialsPage:
+    CredentialsCreatedPage:
     passList:
+    SettingsPage:
+    AboutPage:
+    PersonalAccountPage:
+    CredentialsPage:
 
 <ForgotPasswordPage>:
     name: 'ForgotPage'
@@ -108,6 +113,7 @@ PageManager:
                 TextInput:
                     id: password_input
                     hint_text: "Enter password here"
+                    password:True
                     singleline:True
                     size_hint: 1, None
                     height: "30dp"
@@ -213,6 +219,7 @@ PageManager:
             TextInput:
                 id: password_create_input
                 hint_text: "Enter Password"
+                password: True
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
@@ -220,6 +227,7 @@ PageManager:
             TextInput:
                 id: confirm_password_input
                 hint_text: "Confirm Password"
+                password: True
                 singleline:True
                 size_hint: 1, None
                 height: "30dp"
@@ -291,6 +299,7 @@ PageManager:
                             id: but1
                             icon: "images/block_setting.png"
                             icon_size: "50dp"
+                            on_release: app.root.current = "SettingPage"
                     AnchorLayout:
                         size_hint_y: None
                         height: but2.height
@@ -298,6 +307,7 @@ PageManager:
                             id: but2
                             icon: "images/block_tools.png"
                             icon_size: "50dp"
+                            on_release: app.root.current = "PersonalPage"
                     AnchorLayout:
                         size_hint_y: None
                         height: but3.height
@@ -305,6 +315,7 @@ PageManager:
                             id: but3
                             icon: "images/block_info.png"
                             icon_size: "50dp"
+                            on_release: app.root.current = "AboutPage"
 <PasslistPage@MDAnchorLayout>
     anchor_x: "center"
     anchor_y: "center"
@@ -425,6 +436,7 @@ PageManager:
                     TextInput:
                         id: password_add
                         hint_text: 'Enter Password'
+                        password: True
                         size_hint: 1,None
                         height: '25dp'
                         font_size: '10dp'
@@ -441,7 +453,7 @@ PageManager:
                 font_size: '10dp'
                 size_hint: .55,None
                 height: '25dp'
-                on_release: root.add_credential(self)
+                on_release: app.root.current = "CredentialsPage"
             BoxLayout:
                 size_hint: 1,None
                 height: "20dp"
@@ -450,4 +462,138 @@ PageManager:
                 font_size: '10dp'
                 size_hint: .55,None
                 height: '25dp'
+                on_release: app.root.current = "MainPage"
+                
+<CredentialsCreatedPage@MDAnchorLayout>
+    name: 'CreatedPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: .8,1
+            pos_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "Credentials has been added to your storage :)"
+                size_hint: .8,None
+            Button:
+                text: "back to storage"
+                size_hint: .8,None
+                height: "30dp"
+                on_release: app.root.current = "MainPage"
+                
+#page when user clicks settings
+<SettingsPage>
+    name: 'SettingPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "ang pogi mo po sir rich"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
+                on_release: app.root.current = "MainPage"
+                
+#Page when you want to view your personal account
+<PersonalAccountPage>
+    name: 'PersonalPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "sir rich ipasa niyo po kami sa dsa"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
+                on_release: app.root.current = "MainPage"
+
+#page when you want to view the info of the developers
+<AboutPage>
+    name: 'AboutPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "we labyu sir, love passlock team"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
+                on_release: app.root.current = "MainPage"
+
+#Page when you want to view your selected credentials
+<CredentialsPage>
+    name: 'CredentialsPage'
+    anchor_x: "center"
+    anchor_y: "center"
+    FloatLayout:
+        pos_hint: {'center_y':0.5, 'center_x':0.5}
+        size_hint: 1,1
+        canvas:
+            Color:
+                rgba: [.2,.5,.7,.7]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            post_hint: {'center_y':0.5, 'center_x':0.5}
+            Label:
+                text: "labyu po sir :))"
+                size_hint: 1,None
+            Button:
+                text: "back to main menu"
+                size_hint: .8,None
+                height: "30dp"
                 on_release: app.root.current = "MainPage"
