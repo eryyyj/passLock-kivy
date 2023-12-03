@@ -113,7 +113,7 @@ class AddCredentialsPage(AnchorLayout,Screen):
         add_password = self.ids.password_add.text
         
         if platform and add_username and add_password:
-            self.manager.current = "CredentialsPage"
+            self.manager.current = "CreatedPage"
         else:
             print("Please fill in all fields")
             
